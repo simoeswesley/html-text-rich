@@ -1,0 +1,408 @@
+<style>
+    /* Estilos mobile first */
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 0.5s ease-in-out;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-top: 20px;
+    }
+
+    .timeline-event {
+        display: none;
+        margin: 10px 0;
+        padding: 16px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .timeline-event.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        margin: 10px 0;
+        padding: 16px;
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .timeline-event h3 {
+        color: #ffffff;
+        text-align: center;
+        line-height: 2.2rem;
+        margin-bottom: 16px;
+        height: auto;
+        padding: 0 1rem;
+        font-size: 1.5rem;
+    }
+
+    .timeline-event .event-date {
+        color: #ffffff;
+    }
+
+    .timeline-event a {
+        font-size: 1.3rem;
+        font-weight: 400;
+        text-align: center;
+        color: #fff;
+        border: 2px solid #ffffff;
+        width: fit-content;
+        border-radius: 24px;
+        padding: 5px 25px;
+        margin: 0 auto;
+    }
+
+    .timeline-event a:hover {
+        background-color: #05508b;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .timeline-event a:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(7, 54, 96, 0.5);
+    }
+
+    .timeline-event a:active {
+        background-color: #042440;
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .range-selector {
+        margin: 10px;
+        width: 100%;
+        position: absolute;
+        top: 62px;
+        height: 2px;
+    }
+
+    .indicator {
+        font-weight: 400;
+        margin-top: 10px;
+        color: #ffffff;
+        text-align: center;
+        height: 32px;
+    }
+
+    .event-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #ffffff14;
+        width: 100%;
+        text-align: center;
+        backdrop-filter: blur(6px);
+    }
+
+    .event-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    .active-label .event-date {
+        color: #fff;
+        /* Cor branca quando o evento estiver ativo */
+    }
+
+    .event-date {
+        font-size: 1rem;
+        font-weight: 300;
+        color: #ffffff;
+    }
+
+    .event-date-exact {
+        color: #ffffff;
+    }
+    .event-local {
+        color: #ffffff;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+    .g20br-range-labels {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        border-radius: 24px;
+        width: 100%;
+    }
+
+    .g20br-range-labels>div:last-child {
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 24px;
+    }
+
+    .g20br-range-labels>div:first-child {
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+    }
+
+    .active-label {
+        background-color: #173551;
+        color: white;
+        border: 2px solid #173551;
+    }
+
+    /* Estilos para tablets */
+    @media (min-width: 768px) {
+
+        .g20br-range-labels {
+            flex-direction: row;
+            height: 100px;
+        }
+
+        .range-selector {
+            top: 64px;
+        }
+
+        .timeline {
+            padding: 20px 24px;
+            margin-top: 30px;
+        }
+
+        .timeline-events {
+            height: 254px;
+        }
+
+        .timeline-event h3 {
+            font-size: 1.8rem;
+        }
+
+        .event-title {
+            font-size: 1.2rem;
+        }
+
+        .event-date {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Estilos para desktop */
+    @media (min-width: 1024px) {
+        .timeline {
+            padding: 24px 30px;
+            margin-top: 42px;
+        }
+
+        .timeline-event h3 {
+            font-size: 1.8rem;
+            padding: 0 15rem;
+        }
+
+        .event-title {
+            font-size: 1.2rem;
+        }
+
+        .event-date {
+            font-size: 1.2rem;
+        }
+
+        .range-selector {
+            width: 75%;
+        }
+    }
+</style>
+
+
+<section class="timeline">
+    <div class="g20br-range-labels" id="range-labels"></div>
+    <div id="theme-label" class="indicator"></div>
+    <input type="range" id="event-range" min="0" max="3" value="0" class="range-selector">
+    <div class="timeline-events" id="timeline-events"></div>
+</section>
+
+<script>
+    const eventosAnticorrupcao = [
+        {
+            data: "Outubro de 2023",
+            dataExata: "13/10/2023",
+            titulo: "Brasil na presidência do Grupo Anticorrupção do G20 durante o ano de 2024",
+            tema: "Presidência do Grupo Anticorrupção do G20",
+            link: "https://www.gov.br/cgu/pt-br/assuntos/noticias/2023/10/brasil-anuncia-em-reuniao-da-ocde-que-ira-presidir-o-grupo-anticorrupcao-do-g20-durante-o-ano-de-2024",
+            local: "OCDE",
+            reuniao: "Brasil na presidência do G20",
+            imagem: "resolveuid/117a25727f5c41d1918da5f6a1651798"
+        },
+        {
+            data: "Março de 2024",
+            dataExata: "24/03/2024 a 26/03/2024",
+            reuniao: "1ª Reunião",
+            titulo: "Brasil discute no G20 pauta anticorrupção aliada ao desenvolvimento social e ambiental",
+            tema: "Pauta Anticorrupção e Desenvolvimento",
+            link: "https://www.gov.br/cgu/pt-br/assuntos/noticias/2024/03/brasil-discute-no-g20-pauta-anticorrupcao-aliada-ao-desenvolvimento-social-e-ambiental",
+            local: "Brasília/DF",
+            imagem: "resolveuid/edff4a0905644a2db4c131eb87fb4dfd"
+        },
+        {
+            data: "Junho de 2024",
+            dataExata: "25/06/2024 a 27/06/2024",
+            reuniao: "2ª Reunião",
+            titulo: "G20: “Nosso trabalho tem um impacto profundo na luta global contra a corrupção”, afirmou o ministro da CGU",
+            tema: "Impacto na Luta Global Contra a Corrupção",
+            link: "https://www.gov.br/cgu/pt-br/assuntos/noticias/2024/06/g20-201cnosso-trabalho-tem-um-impacto-profundo-na-luta-global-contra-a-corrupcao201d-afirmou-o-ministro-da-cgu",
+            local: "Paris/FRANÇA",
+            imagem: "resolveuid/77a7f52c9343440e9efe881bf62e9953"
+        },
+        {
+            data: "Outubro de 2024",
+            dataExata: "21/10/2024 a 24/10/2024",
+            reuniao: "3ª Reunião",
+            titulo: "O Evento Acontecerá em Outubro de 2024 no Rio Grande do Norte",
+            tema: "Entrega dos Trabalhos 🎉",
+            link: "#",
+            local: "Natal/RN",
+            imagem: "resolveuid/153789b267474b9ab5e49c3b3efb438d"
+        },
+    ];
+
+    let autoUpdateInterval;
+
+    // Função para criar a linha de datas e eventos clicáveis
+    function criarTimeline() {
+        const timelineContainer = document.getElementById('timeline-events');
+        const labelsContainer = document.getElementById('range-labels');
+
+        // Remover o theme-label existente fora da timeline-events
+        const themeLabel = document.getElementById('theme-label');
+        if (themeLabel) {
+            themeLabel.remove();
+        }
+
+        eventosAnticorrupcao.forEach((evento, index) => {
+            const eventDiv = document.createElement('div');
+            eventDiv.classList.add('timeline-event');
+            eventDiv.setAttribute('data-event-index', index);
+
+            const dateDiv = document.createElement('p');
+            dateDiv.classList.add('event-date');
+            dateDiv.textContent = evento.data;
+
+            const dateExactDiv = document.createElement('p');
+            dateExactDiv.classList.add('event-date-exact');
+            dateExactDiv.textContent = evento.dataExata;
+
+            const eventTitle = document.createElement('h3');
+            eventTitle.textContent = evento.titulo;
+
+            const local = document.createElement('p');
+            local.classList.add('event-local');
+            local.textContent = evento.local;
+
+            const eventLink = document.createElement('a');
+            eventLink.href = evento.link;
+            eventLink.textContent = 'Leia mais';
+            eventLink.target = '_blank';
+
+
+            // Criação do theme-label de forma dinâmica para cada evento
+            const themeLabel = document.createElement('div');
+            themeLabel.classList.add('indicator');
+            themeLabel.textContent = evento.tema || 'Impacto na Luta Global Contra a Corrupção';
+            eventDiv.appendChild(dateExactDiv);
+            eventDiv.appendChild(themeLabel); 
+            eventDiv.appendChild(eventTitle);
+            eventDiv.appendChild(local);
+
+            if (evento.link) {
+                eventDiv.appendChild(eventLink);
+            }
+            timelineContainer.appendChild(eventDiv);
+
+            // Cria os eventos clicáveis
+            const eventContainer = document.createElement('div');
+            eventContainer.classList.add('event-container');
+            eventContainer.setAttribute('data-event-index', index);
+
+            const eventTitleContainer = document.createElement('div');
+            eventTitleContainer.classList.add('event-title');
+            eventTitleContainer.textContent = evento.reuniao || evento.titulo;
+
+            const eventDateContainer = document.createElement('div');
+            eventDateContainer.classList.add('event-date');
+            eventDateContainer.textContent = evento.data;
+
+            eventContainer.appendChild(eventTitleContainer);
+            eventContainer.appendChild(eventDateContainer);
+            labelsContainer.appendChild(eventContainer);
+
+            // Evento de clique para exibir o evento correspondente na timeline e reiniciar o timer
+            eventContainer.addEventListener('click', () => {
+                document.getElementById('event-range').value = index;
+                atualizarTimeline();
+                reiniciarAutoUpdate();
+            });
+        });
+    }
+
+    // Função para atualizar a timeline conforme o valor do slider
+    function atualizarTimeline() {
+        const rangeInput = document.getElementById('event-range');
+        const rangeValue = rangeInput.value;
+        const events = document.querySelectorAll('.timeline-event');
+        const labels = document.querySelectorAll('.event-container');
+        const timelineSection = document.querySelector('.timeline');
+
+        // Ocultar todos os eventos e remover a classe ativa dos labels
+        events.forEach(event => {
+            event.classList.remove('active');
+        });
+        labels.forEach(label => {
+            label.classList.remove('active-label');
+        });
+
+        // Mostrar apenas o evento correspondente ao valor do range e destacar o label
+        const eventToShow = events[rangeValue];
+        const labelToHighlight = labels[rangeValue];
+
+        if (eventToShow) {
+            eventToShow.classList.add('active');
+            labelToHighlight.classList.add('active-label');
+
+            // Atualizar o background da seção com a imagem correspondente
+            timelineSection.style.backgroundImage = `url(${eventosAnticorrupcao[rangeValue].imagem})`;
+        }
+    }
+
+    // Função para atualizar o evento automaticamente a cada 5 segundos
+    function autoUpdateTimeline() {
+        const rangeInput = document.getElementById('event-range');
+        let rangeValue = parseInt(rangeInput.value);
+
+        rangeValue = (rangeValue + 1) % eventosAnticorrupcao.length; // Loop para o próximo evento
+        rangeInput.value = rangeValue;
+        atualizarTimeline();
+    }
+
+    // Função para iniciar o intervalo de atualização automática
+    function iniciarAutoUpdate() {
+        autoUpdateInterval = setInterval(autoUpdateTimeline, 5000); // 5 segundos
+    }
+
+    // Função para reiniciar a contagem automática ao clicar em um evento
+    function reiniciarAutoUpdate() {
+        clearInterval(autoUpdateInterval);
+        iniciarAutoUpdate();
+    }
+
+    // Inicialização
+    criarTimeline();
+    atualizarTimeline();
+    iniciarAutoUpdate();
+
+    // Atualizar a timeline ao mover o slider manualmente
+    document.getElementById('event-range').addEventListener('input', () => {
+        atualizarTimeline();
+        reiniciarAutoUpdate();
+    });
+</script>

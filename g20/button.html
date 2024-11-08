@@ -1,0 +1,59 @@
+<style>
+    .block-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px
+    }
+
+    .btn-custom {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #073660;
+        border: none;
+        border-radius: 50px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-custom span {
+        font-size: medium;
+        font-weight: 500;
+        text-align: center;
+        color: #fff;
+    }
+
+    .btn-custom:hover {
+        background-color: #05508b;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .btn-custom:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(7, 54, 96, 0.5);
+    }
+
+    .btn-custom:active {
+        background-color: #042440;
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    @media(min-width:768px) {
+        .btn-custom {
+            padding: 14px 28px;
+            width: auto
+        }
+    }
+
+    @media(min-width:1024px) {
+        .btn-custom {
+            font-size: 1.2rem;
+            padding: 16px 32px
+        }
+    }
+</style>
+<div class="block-container"><a href="https://www.gov.br/cgu/pt-br/g20-brasil-2024/noticias" class="btn-custom" type="button"><span>Leia mais sobre a atuação da CGU no G20
+            Brasil</span></a></div>

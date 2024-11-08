@@ -1,0 +1,74 @@
+<style>
+    .ethics-find-input-container {
+        margin-top: -127px !important;;
+        padding: 15px;
+        background-color: #f1f5fd47;
+        backdrop-filter: blur(7px);
+        border-top-left-radius: 13px;
+        border-top-right-radius: 13px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ethics-find-search-container {
+        padding: 15px;
+        border-top-left-radius: 13px;
+        border-top-right-radius: 13px;
+    }
+
+    .ethics-find-input-search {
+        width: 100%;
+        border: 3px solid #e3342f !important;
+        border-radius: 33px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .ethics-find-button-container {
+        display: flex;
+        justify-content: end;
+        padding: 0 14px 14px 18px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .ethics-find-clear-button {
+        transition: background-color 0.5s ease;
+        font-size: small;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        padding: 8px 12px;
+        background-color: transparent;
+        color: #2c4fb2;
+        border: none;
+        cursor: pointer;
+    }
+
+    .ethics-find-clear-button:hover {
+        background-color: #e0e7ff;
+        border-radius: 5px;
+    }
+
+    .ethics-find-broom-icon {
+        color: #2c4fb2;
+    }
+</style>
+<div class="br-input large input-button ethics-find-input-container" style="margin-top: 13px;">
+    <div class="ethics-find-search-container">
+        <div class="br-input small">
+            <div class="input-group">
+                <input class="input-highlight ethics-find-input-search" id="searchInput"
+                    placeholder="Digite termos para filtrar a lista" onkeyup="filterList()">
+            </div>
+        </div>
+    </div>
+    <div class="ethics-find-button-container">
+        <button onclick="clearFilter()" class="br-button secondary ethics-find-clear-button" type="button">
+            <i class="fa-solid fa-broom ethics-find-broom-icon"></i>Limpar Filtro
+        </button>
+    </div>
+</div>

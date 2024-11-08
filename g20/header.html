@@ -1,0 +1,124 @@
+<!-- CSS -->
+<style>
+    /* Estilos padrão (Mobile First) */
+    .g20br-header-container {
+        display: flex;
+        justify-content: center;
+        background-color: #043659;
+        background-image: url('resolveuid/36ccde11a27d48b48eb13dd3cbd2d970');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        /* Um pouco de padding para telas pequenas */
+    }
+
+    .g20br-header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        /* Menor gap em mobile */
+        width: 100%;
+        /* Ocupa toda a largura */
+        max-width: 600px;
+        /* Limita a largura máxima em telas pequenas */
+    }
+
+    .g20br-header-text-section {
+        text-align: center;
+        /* Centraliza o texto em telas pequenas */
+        padding: 0 15px;
+        /* Padding lateral para evitar que o texto encoste nas bordas */
+    }
+
+    .g20br-header-text-section h2 {
+        color: #ffffff;
+        font-weight: 600;
+        text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.41);
+        line-height: 2.5rem;
+        /* Menor line-height para mobile */
+        margin-bottom: 16px;
+        font-size: 1.8rem;
+        /* Reduz o tamanho da fonte */
+    }
+
+    .g20br-header-text-section h2 span {
+        font-weight: 200;
+    }
+
+    .g20br-header-text-section p {
+        color: #ffffff;
+        font-weight: 300;
+        line-height: 1.5;
+        text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.41);
+        font-size: 1rem;
+        /* Tamanho de texto adequado para mobile */
+    }
+
+    .g20br-header-logo {
+        background-image: url('resolveuid/a4259377d518485e92a8f0c2ef780ab0');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        height: 200px;
+        /* Altura menor para mobile */
+        width: 200px;
+        /* Largura menor para mobile */
+    }
+
+    /* Ajustes para telas maiores (Tablets e Desktops) */
+    @media (min-width: 768px) {
+        .g20br-header-container {
+            padding: 100px 20px;
+            /* Um pouco de padding para telas pequenas */
+        }
+
+        .g20br-header-content {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1180px;
+            /* Aumenta a largura para desktops */
+        }
+
+        .g20br-header-text-section {
+            max-width: 600px;
+            text-align: left;
+            /* Volta o texto alinhado à esquerda em telas maiores */
+        }
+
+        .g20br-header-text-section h2 {
+            line-height: normal;
+            font-size: x-large;
+        }
+
+        .g20br-header-text-section p {
+            line-height: 1.5;
+            font-size: 1.5rem;
+            /* Tamanho de texto adequado para mobile */
+        }
+
+
+        .g20br-header-logo {
+            height: 260px;
+            width: 400px;
+        }
+    }
+</style>
+
+<!-- HTML -->
+<section class="g20br-header-press-section">
+    <div class="g20br-header-container">
+        <div class="g20br-header-content">
+            <div class="g20br-header-logo"></div>
+            <article class="g20br-header-text-section">
+                <h2><span>G20 Brasil 2024</span><br />Construindo um mundo justo <br />e um planeta sustentável</h2>
+                <p>O G20 é um grupo composto pelas 19 maiores economias do mundo e a União Europeia. Ele reúne líderes
+                    globais para discutir e coordenar políticas econômicas, financeiras e políticas públicas, com o
+                    objetivo de promover estabilidade econômica e desenvolvimento sustentável.</p>
+            </article>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,278 @@
+<style>
+    .cover-collection-tile {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 18px;
+        overflow: hidden;
+        width: 31%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .card h3 {
+        font-size: 1rem;
+        line-height: normal;
+        padding: 10px;
+        margin: 0;
+
+    }
+
+    .card p {
+        padding: 10px;
+        font-weight: 400;
+        font-size: 1.6rem !important;
+        color: #555;
+        line-height: 1.75;
+    }
+
+    .card a {
+        font-size: 1.45rem;
+        font-Weight: 500;
+        color: #ffffff;
+        line-height: normal;
+        text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.41);
+    }
+
+    .card time {
+        padding: 0 10px;
+        font-size: 12px;
+        color: #ffffff;
+        font-weight: 500;
+        margin-left: 14px;
+        position: absolute;
+        bottom: 85px;
+    }
+
+    .card div {
+        position: absolute;
+        top: 0;
+        padding: 0px 10px;
+        color: #04327c;
+        background: #ffffff;
+        width: fit-content;
+        border-radius: 36px;
+        margin: 15px;
+        font-size: smaller;
+        font-weight: 600;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .card:hover img {
+        filter: brightness(90%);
+    }
+</style>
+
+<script>
+
+    function createAfterPseudoElement() {
+        const recessedDivs = document.querySelectorAll('.row.linha-recuada');
+
+        if (recessedDivs.length > 1) {
+            const recessedDiv = recessedDivs[1];
+
+            const style = document.createElement('style');
+            style.innerHTML = `
+        .row.linha-recuada {
+            position: relative; 
+            background: none; 
+        }
+
+        .row.linha-recuada:nth-of-type(4)::after {
+            content: '';
+            position: absolute;
+            top: 0; 
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('resolveuid/1f4a7756aac24569b0b9e22074c1df3f');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: contain;
+            z-index: -1;
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            background-color: #073660;
+            margin: 0 24px;
+        }
+        @media (max-width: 600px) {
+            .row.linha-recuada:nth-of-type(4)::after {
+                background-size: cover;
+            }
+        }
+    `;
+            document.head.appendChild(style);
+        }
+    }
+
+    function captureNews() {
+        const itens = document.querySelectorAll('.cover-collection-tile .collection-item');
+        const noticias = Array.from(itens).map(item => {
+            const dataPublicacao = item.querySelector('time')?.getAttribute('datetime') || '';
+            const categoria = item.querySelector('div')?.textContent.trim() || '';
+            const link = item.querySelector('h3 a')?.getAttribute('href') || '';
+            const titulo = item.querySelector('h3 a')?.textContent.trim() || '';
+            const descricao = item.querySelector('.description')?.textContent.trim() || '';
+            const imagem = item.querySelector('img')?.getAttribute('src') || '';
+
+            return {
+                dataPublicacao,
+                categoria,
+                link,
+                titulo,
+                descricao,
+                imagem
+            };
+        });
+        console.log(JSON.stringify(noticias, null, 2));
+    }
+
+    function applyStyleToCards() {
+        const container = document.querySelector('.cover-collection-tile');
+        const itens = document.querySelectorAll('.cover-collection-tile .collection-item');
+
+        container.style.display = 'flex';
+        container.style.flexWrap = 'wrap';
+        container.style.gap = '20px';
+
+        const setItemWidth = () => {
+            const screenWidth = window.innerWidth;
+
+            itens.forEach(item => {
+                item.classList.add('card');
+                item.style.position = 'relative';
+                item.style.overflow = 'hidden';
+                item.style.borderRadius = '24px';
+                item.style.boxShadow = 'rgba(0, 0, 0, 0.1) 0px 4px 12px';
+                item.style.transition = 'transform 0.3s ease-in-out';
+                item.style.display = 'flex';
+                item.style.flexDirection = 'column';
+                item.style.justifyContent = 'flex-end';
+                item.style.backgroundColor = '#0436599e';
+                item.style.padding = 0;
+                item.style.height = '250px';
+                item.style.marginBottom = 0;
+
+                if (screenWidth <= 600) {
+                    item.style.width = '100%';
+                } else if (screenWidth > 600 && screenWidth <= 1024) {
+                    item.style.width = 'calc(50% - 20px)';
+                } else {
+                    item.style.width = 'calc(33.333% - 20px)';
+                }
+
+                const img = item.querySelector('img');
+                if (img) {
+                    item.style.backgroundImage = `url(${img.src})`;
+                    item.style.backgroundSize = 'cover';
+                    backgroundRepeat = 'no-repeat';
+                    item.style.backgroundPosition = 'center top';
+                    img.style.display = 'none';
+                }
+
+                const title = item.querySelector('h3');
+                if (title) {
+                    title.style.fontSize = '1.4rem';
+                    title.style.fontWeight = '600';
+                    title.style.color = '#ffffff';
+                    title.style.padding = '6px 24px 24px';
+                    title.style.margin = '0';
+                    title.style.backgroundColor = '#0436599e';
+                    title.style.background = 'linear-gradient(0deg, rgb(7, 54, 96) 0%, rgba(7, 54, 96, 0.93) 63%, rgba(13, 58, 99, 0) 100%)';
+                    title.style.height = '145px';
+                    title.style.display = 'flex';
+                    title.style.justifyContent = 'end';
+                    title.style.flexDirection = 'column';
+                }
+
+                const description = item.querySelector('p');
+                if (description) {
+                    description.style.display = 'none';
+                }
+
+                item.addEventListener('mouseover', () => {
+                    item.style.transform = 'scale(1.02)';
+                    item.style.boxShadow = 'rgba(0, 0, 0, 0.2) 0px 6px 16px';
+                });
+                item.addEventListener('mouseout', () => {
+                    item.style.transform = 'scale(1)';
+                    item.style.boxShadow = 'rgba(0, 0, 0, 0.1) 0px 4px 12px';
+                });
+            });
+        };
+
+        setItemWidth();
+        window.addEventListener('resize', setItemWidth);
+    }
+
+    function filterAndOrganizeCards() {
+        const container = document.querySelector('.cover-collection-tile');
+        const itens = Array.from(container.querySelectorAll('.collection-item'));
+
+        // Separar os itens que correspondem aos critérios
+        const itensEspeciais = [];
+        const itensRestantes = [];
+
+        itens.forEach(item => {
+            const categoria = item.querySelector('div')?.textContent.trim();
+            const titulo = item.querySelector('h3 a')?.textContent.trim();
+
+            if (categoria === 'Aviso de Pauta' || categoria === 'Credenciamento de Imprensa' ||
+                titulo.includes('Credenciamento de Imprensa') || titulo.includes('Aviso de Pauta')) {
+                itensEspeciais.push(item);
+            } else {
+                itensRestantes.push(item);
+            }
+        });
+
+        // Combinar os itens especiais no início e os restantes depois
+        const itensFiltrados = [...itensEspeciais, ...itensRestantes];
+
+        // Limpar o container
+        container.innerHTML = '';
+
+        // Definir o número de itens a serem exibidos com base no tamanho da tela
+        let totalDesejado;
+
+        if (window.innerWidth >= 1024) {
+            // Desktop (6 itens)
+            totalDesejado = 6;
+        } else if (window.innerWidth >= 768) {
+            // Tablet (2 itens)
+            totalDesejado = 2;
+        } else {
+            // Mobile (3 itens)
+            totalDesejado = 3;
+        }
+
+        // Limitar a exibição ao número de itens desejado
+        const itensAExibir = itensFiltrados.slice(0, totalDesejado);
+
+        // Adicionar os itens filtrados e organizados ao container
+        itensAExibir.forEach(item => container.appendChild(item));
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        createAfterPseudoElement()
+        captureNews();
+        applyStyleToCards();
+        filterAndOrganizeCards();
+    });
+</script>

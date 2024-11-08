@@ -1,0 +1,176 @@
+<script>
+   let allItems = []; // Variável para armazenar todos os itens
+
+// Função para estilizar o container da lista
+function styleListContainer() {
+    const listContainer = document.getElementById('document-list-items');
+    Object.assign(listContainer.style, {
+        listStyle: 'none',
+        padding: '0',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        gap: '10px'
+    });
+}
+
+// Função para estilizar cada item da lista
+function styleItems() {
+    allItems = document.querySelectorAll('#document-list-items li'); // Armazena todos os itens
+    const items = Array.from(allItems);
+    let itemWidth = window.innerWidth < 768 ? '100%' : '49%'; // Itens ocupam 100% da largura em telas pequenas e 49% em telas maiores
+
+    items.forEach(item => {
+        Object.assign(item.style, {
+            border: '1px solid #ddd',
+            borderRadius: '8px',
+            padding: '16px',
+            marginBottom: '12px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            backgroundColor: '#fff',
+            transition: 'transform 0.2s',
+            width: itemWidth
+        });
+
+        addHoverEffect(item);
+        addIconToLink(item);
+    });
+}
+
+// Função para adicionar efeito de hover
+function addHoverEffect(item) {
+    item.addEventListener('mouseover', () => {
+        item.style.border = '1px solid #cf581f';
+        item.style.transform = 'scale(1.02)';
+    });
+
+    item.addEventListener('mouseout', () => {
+        item.style.border = '1px solid #ddd';
+        item.style.transform = 'scale(1)';
+    });
+}
+
+// Função para adicionar o ícone FontAwesome aos links de download
+function addIconToLink(item) {
+    const link = item.querySelector('a');
+    if (link) {
+        const icon = document.createElement('i');
+        icon.classList.add('fas', 'fa-download');
+        icon.style.marginRight = '8px';
+        icon.style.color = '#cf581f';
+        link.prepend(icon);
+
+        Object.assign(link.style, {
+            fontSize: 'small',
+            fontWeight: '700',
+            display: 'block',
+            margin: '16px 0 0 0'
+        });
+    }
+}
+
+// Função para filtrar a lista com base no input de texto
+function filterList() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const filteredItems = Array.from(allItems).filter(item =>
+        item.textContent.toLowerCase().includes(searchInput)
+    );
+
+    // Atualiza a exibição com os itens filtrados
+    updateDisplay(filteredItems);
+    console.log('FIltro da busca =>>', filteredItems)
+}
+
+// Função para limpar o filtro
+function clearFilter() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.value = ''; // Limpar o valor do input
+    updateDisplay(Array.from(allItems)); // Restaurar a exibição original com todos os itens
+}
+
+// Função para atualizar a exibição da lista e a paginação
+function updateDisplay(filteredItems) {
+    const paginationContainer = document.getElementById('pagination');
+
+    // Ocultar todos os itens
+    allItems.forEach(item => item.style.display = 'none');
+
+    // Mostrar apenas os itens filtrados
+    filteredItems.forEach(item => item.style.display = 'block');
+      console.log('*****',filteredItems);
+
+    // Atualizar a paginação com os itens filtrados
+    const totalFilteredItems = filteredItems.length;
+    if (totalFilteredItems > 0) {
+        createPagination(totalFilteredItems, 20); // 20 itens por página
+        displayPage(1, 20); // Exibir a primeira página dos itens filtrados
+    } else {
+        // Se não houver itens filtrados, ocultar a paginação
+        paginationContainer.innerHTML = '';
+    }
+}
+
+// Função para criar a paginação com botão ativo
+function createPagination(totalItems, itemsPerPage) {
+    const paginationContainer = document.getElementById('pagination');
+
+    // Limpar conteúdo anterior
+    paginationContainer.innerHTML = '';
+
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        pageButton.classList.add('page-button');
+        pageButton.onclick = () => {
+            displayPage(i, itemsPerPage);
+            setActivePageButton(i); // Definir página ativa
+        };
+        paginationContainer.appendChild(pageButton);
+    }
+    // Marcar o primeiro botão como ativo ao criar a paginação
+    setActivePageButton(1);
+}
+
+// Função para exibir os itens da página selecionada
+function displayPage(pageNumber, itemsPerPage) {
+    const totalItems = allItems.length;
+
+    // Calcular o índice inicial e final dos itens a serem exibidos
+    const start = (pageNumber - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    // Ocultar todos os itens
+    allItems.forEach(item => item.style.display = 'none');
+
+    // Mostrar apenas os itens da página atual
+    for (let i = start; i < end && i < totalItems; i++) {
+        allItems[i].style.display = 'block';
+    }
+}
+
+// Função para definir o botão da página ativa
+function setActivePageButton(pageNumber) {
+    const pageButtons = document.querySelectorAll('.page-button');
+    pageButtons.forEach(button => button.classList.remove('active')); // Remover classe ativa de todos os botões
+    pageButtons[pageNumber - 1].classList.add('active'); // Adicionar classe ativa ao botão selecionado
+}
+
+// Função principal que chama as outras funções
+function init() {
+    styleListContainer();
+    styleItems();
+    
+    const itemsPerPage = 20; // Definindo 20 itens por página
+    createPagination(allItems.length, itemsPerPage);
+    displayPage(1, itemsPerPage); // Exibir a primeira página ao inicializar
+}
+
+// Evento DOMContentLoaded para executar o código após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', () => {
+    init();
+});
+
+    
+    </script>

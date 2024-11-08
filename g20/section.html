@@ -1,0 +1,138 @@
+<style>
+    /* Estilos base para mobile */
+    .g20br-container-video-section {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .g20br-container-video {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .content-text,
+    .content-video {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
+
+    .content-text h3 {
+        font-weight: 600;
+        line-height: 2.2rem;
+        margin-bottom: 16px;
+        font-size: 1.8rem;
+    }
+
+    .content-text h3 span {
+        font-weight: 400;
+    }
+
+    .content-text p {
+        font-weight: 400;
+        line-height: 1.5;
+        font-size: 1.4rem;
+    }
+
+    .video-wrapper iframe {
+        width: 100%;
+        border-radius: 10px;
+        height: 200px;
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 40%;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* Ajustes para tablets e telas maiores */
+    @media (min-width: 768px) {
+        .g20br-container-video-section {
+            display: flex;
+            justify-content: center;
+            padding: 20px 223px;
+        }
+
+        .g20br-container-video {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .content-text,
+        .content-video {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+
+        .video-container {
+            padding-bottom: 56%;
+        }
+
+        .content-text h3 {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        .video-wrapper iframe {
+            height: 250px;
+        }
+    }
+
+    /* Ajustes para desktops grandes */
+    @media (min-width: 1024px) {
+        .g20br-container-video {
+            width: 1180px;
+            height: 302px;
+        }
+
+        .content-text h3 {
+            font-size: 2.2rem;
+            line-height: 3rem;
+        }
+
+        .video-wrapper iframe {
+            height: 302px;
+        }
+    }
+</style>
+
+<section class="g20br-container-video-section">
+    <div class="g20br-container-video">
+        <div class="content-text">
+            <h3><span>Integridade Empresarial:</span> <br />Ampliando o Enfoque para Desigualdades <br /> e Direitos
+                Humanos
+            </h3>
+            <p>
+                Descubra como a integridade vai além do combate à corrupção e abrange questões climáticas, sociais e de
+                direitos
+                humanos. Assista ao vídeo para entender essa nova perspectiva!</p>
+        </div>
+
+        <div class="content-video video-wrapper">
+            <div class="video-container">
+                <iframe class="responsive-iframe"
+                    src="https://www.youtube.com/embed/k3d5reYjZos?si=UAQ6VzsMv3eqNS7W&amp;controls=0"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>

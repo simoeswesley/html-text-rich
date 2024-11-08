@@ -1,0 +1,116 @@
+<style>
+    .hero-section {
+        display: flex;
+        justify-content: center;
+        height: 346px;
+        padding: 35px 13px;
+        background: linear-gradient(225deg, hsla(148, 100%, 47%, 1) 0%, hsla(211, 90%, 47%, 1) 100%);
+        background: -moz-linear-gradient(225deg, hsla(148, 100%, 47%, 1) 0%, hsla(211, 90%, 47%, 1) 100%);
+        background: -webkit-linear-gradient(225deg, hsla(148, 100%, 47%, 1) 0%, hsla(211, 90%, 47%, 1) 100%);
+    }
+
+    .hero-container {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 82px;
+        gap: 56px;
+    }
+
+    .hero-text {
+        align-self: flex-end;
+        font-size: 2.8rem;
+    }
+
+    .text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .hero-check-headings {
+        font-size: 3rem;
+        line-height: 3.7rem;
+        color: #ffffff;
+        margin-bottom: 13px;
+    }
+
+    .hero-description {
+        font-weight: normal;
+        max-width: 621px;
+        color: #ffffff;
+        line-height: normal;
+    }
+
+    .hero-image {
+        display: block;
+        width: 164px;
+        height: 164px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-image: url('resolveuid/740e7e5713064de6b539a98099946191');
+    }
+
+    @media (max-width: 770px) {
+        .hero-section {
+            flex-direction: column-reverse;
+            align-items: center;
+            height: fit-content;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 100%;
+            align-items: center;
+            gap: unset;
+        }
+
+        .text-container {
+            align-items: center;
+        }
+
+        .hero-image {
+            background-size: 80%;
+            background-position: center;
+        }
+
+        .hero-text {
+            width: auto;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-check-headings {
+            font-size: 2rem;
+            text-align: center;
+            line-height: 2.7rem;
+        }
+
+        .hero-description {
+            line-height: 2rem;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .spantext {
+            font-size: 2rem;
+            line-height: 2.9rem;
+            text-align: center;
+            display: inline;
+        }
+    }
+</style>
+<div class="hero-section">
+    <div class="hero-container">
+        <div class="hero-text">
+            <div class="text-container">
+                <h3 class="hero-check-headings"><span class="spantext">Acordos de </span>Cooperação Técnica</h3>
+                <p class="hero-description">Acordos de Cooperação Técnica (ACT) são instrumentos celebrados entre órgãos
+                    e entidades da Administração Pública direta e indireta, nas esferas federal, estadual e municipal,
+                    bem como serviços sociais autônomos e consórcios públicos.</p>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </div>
+</div>

@@ -1,0 +1,679 @@
+<style>
+
+
+
+    #myTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #myTable thead {
+        background-color: #ffffff;
+        border-top: 1px solid #e8edfd;
+    }
+
+    #myTable thead th {
+        padding: 8px;
+        text-align: left;
+        font-weight: 600;
+        color: #ffffff;
+        font-size: small;
+        background-color: #2c45d6;
+    }
+
+    @media (max-width: 768px) {
+        #myTable {
+            width: 100%;
+            table-layout: auto;
+        }
+
+        #myTable colgroup col {
+            width: auto;
+        }
+
+        #myTable col:nth-child(1) {
+            width: 70px;
+            background-color: red;
+        }
+
+        #myTable th,
+        #myTable td {
+            white-space: nowrap;
+            padding: 8px;
+        }
+    }
+</style>
+<div
+    style="width: 100%; position: relative; margin-top: -174px; background-color: #f2f5fd; box-shadow: 0px 0px 8px -3px rgba(82,67,5,0.84); border-radius: 13px; overflow: hidden;">
+    <div class="br-input large input-button" style="margin-top: 13px;">
+        <label for="input-search-large" style="display: none; font-size: small;">Digite um termo na caixa de pesquisa
+            para filtrar
+            a
+            lista de membros da Rede Lai</label>
+        <div
+            style="padding: 15px; background-color: #f1f5fd; border-top-left-radius: 13px; border-top-right-radius: 13px;">
+            <div class="br-input small">
+                <div class="input-group">
+                    <input style="border: 2px solid #533bdc; border-radius: 33px;" class="input-highlight"
+                        id="searchInput" onkeyup="filterTable()"
+                        placeholder="Digite termos para filtrar a lista de membros da Rede Lai" />
+                </div>
+            </div>
+        </div>
+        <div
+            style="display: flex; justify-content: space-between;  padding: 0 14px 14px 18px; align-items: center; flex-wrap: wrap;">
+            <h4 style="font-size: small;" id="feedback">Lista Completa</h4>
+            <button onmousedown="changeButtonColor('white')" onmouseup="resetButtonColor()" onclick="clearSearch()"
+                style=" transition: background-color 0.5s ease; font-size: small; line-height: 0; display: flex; align-items: center; gap:8px; justify-content: center; padding: 0; font-size: small; color: #2c4fb2;"
+                id="search-clean" class="br-button secondary" type="button"><i style="color: #2c4fb2;"
+                    class="fa-solid fa-broom"></i>Limpar Filtros
+            </button>
+        </div>
+    </div>
+    <div style="overflow-x: auto; max-width: 858px;">
+        <table id="myTable" border="1" style="width: 100%; border-collapse: collapse;">
+            <thead style="background-color: #ffffff; border-top: 1px solid #e8edfd;">
+                <tr style="background-color: #2c45d6;;">
+                    <th style="padding: 8px; text-align: left; font-weight: 600; color: #ffffff; font-size: small;">
+                        Adesão</th>
+                    <th style="padding: 8px; text-align: left; font-weight: 600; color: #ffffff; font-size: small;">
+                        Órgão ou entidade
+                    </th>
+                    <th style="padding: 8px; text-align: left; font-weight: 600; color: #ffffff; font-size: small;">
+                        Esfera</th>
+                    <th style="padding: 8px; text-align: left; font-weight: 600; color: #ffffff; font-size: small;">
+                        Cidade</th>
+                    <th style="padding: 8px; text-align: left; font-weight: 600; color: #ffffff; font-size: small;">
+                        Estado</th>
+                    <th style="padding: 8px; text-align: left; font-weight: 600; color: #ffffff; font-size: small;">
+                        Autoridade máxima
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        12/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Município de
+                        Recife - PE</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Recife
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Pernambuco</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">José
+                        Ricardo Wanderley Dantas de
+                        Oliveira</td>
+                </tr>
+                <tr
+                    style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd;  vertical-align: middle;">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        14/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Município de
+                        Manaus - AM</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Manaus
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Amazonas
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Arnaldo
+                        Gomes Flores</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        14/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria e Ouvidoria Geral do
+                        Estado do Ceará</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Fortaleza</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Ceará
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Aloisio
+                        Barbosa de Carvalho Neto</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        14/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria e Ouvidoria Geral do
+                        Município de Fortaleza - CE</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Fortaleza</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Ceará
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Maria
+                        Christina Machado Publio</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        17/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado do Rio Grande do Norte</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Natal
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Rio Grande
+                        do Norte</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Luciana
+                        Daltro de Castro Pádua</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        18/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Município de Maceió-AL</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Maceió
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Alagoas
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">José de
+                        Barros Lima Neto</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        21/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado do
+                        Paraná</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Curitiba
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Paraná
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Leticia
+                        Ferreira da Silva</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        21/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Estado da
+                        Paraíba – CGE/PB</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">João Pessoa
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Paraíba
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Letácio
+                        Tenório Guedes Júnior</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        21/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Município de
+                        São Luís - MA</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">São Luís
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Maranhão
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Sergio
+                        Motta</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        24/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Secretaria Municipal de Transparência
+                        e Controle Interno de Palmas - TO</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Palmas
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Tocantins</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Carlos
+                        José Assis Júnior</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        25/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado de
+                        Minas Gerais</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Belo
+                        Horizonte</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Minas Gerais
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Rodrigo
+                        Fontenelle de Araújo Miranda
+                    </td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        26/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Secretaria Municipal de Transparência
+                        e Controladoria de Porto Alegre - RS</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Porto Alegre
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Rio Grande
+                        do Sul</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Carlos
+                        Fett Paiva Neto</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        27/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Distrito
+                        Federal - CGDF</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Distrital</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Brasília
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Distrito
+                        Federal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Daniel Alves
+                        Lima</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        28/06/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado de Mato
+                        Grosso do Sul</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Campo Grande
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Mato Grosso
+                        do Sul</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Carlos
+                        Eduardo Girão de Arruda</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        01/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Estado de
+                        Roraima</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Boa
+                        Vista</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Roraima
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Regys
+                        Odlaire Lima de Freitas</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        02/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Estado de
+                        Rondônia</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Porto Velho
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Rondônia
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">José
+                        Abrantes Alves de Aquino</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        02/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Município de Porto Velho/RO (CGM)</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Porto
+                        Velho</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Rondônia
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Jonhy
+                        Milson Oliveira Martins</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        02/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria Geral do Município de
+                        São Paulo</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">São Paulo
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">São Paulo
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Daniel
+                        Gustavo Falcão Pimentel dos
+                        Reis</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        03/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado de Santa Catarina</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Florianópolis</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Santa
+                        Catarina</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Márcio
+                        Cassol Carvalho</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        03/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Secretaria da Controladoria-Geral do
+                        Estado de Pernambuco</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Recife
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Pernambuco</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Érika
+                        Gomes Lacet</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        03/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Secretaria de Estado de Controle e
+                        Transparência - SECONT do Estado do Espírito Santo</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Vitória
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Espírito
+                        Santo</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Edmar
+                        Moreira Camata</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        05/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado do Pará
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Belém
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Pará
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">André
+                        Rami Pereira Bassalo</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        08/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Secretaria de Estado de Transparência
+                        e Controle do Maranhão</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">São Luís
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Maranhão
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Raul
+                        Cancian Mochel</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        09/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Município de Vitória</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Vitória
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Espírito
+                        Santo</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Denis
+                        Penedo Prates</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        15/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado de
+                        Goiás</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Goiânia
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Goiás
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Henrique
+                        Moraes Ziller</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        18/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Estado de
+                        Alagoas</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Estadual
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Maceió
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Alagoas
+                    </td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Caroline
+                        Laurentino de Almeida
+                        Balbino</td>
+                </tr>
+                <tr style="background-color: #ffffff; height: 85px; border-top: 1px solid #e8edfd; ">
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        24/07/2024</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Controladoria-Geral do Município de
+                        Florianópolis</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Municipal</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">
+                        Florianópolis</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Santa
+                        Catarina</td>
+                    <td style="padding: 8px; text-align: left; font-size: smaller; vertical-align: middle;">Rodrigo
+                        De Bona da Silva</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <p id="noResultsMessage" style="display: none; font-size: small; text-align: center;"><i
+            class="fa-solid fa-circle-info" style="margin-right: 5px;"></i>Sua busca não refletiu nenhum resultado.</p>
+</div>
+
+<script>
+
+    const button = document.getElementById('search-clean');
+    button.style.display = 'none';
+
+    function scrollToTable() {
+        const table = document.getElementById('myTable');
+        const tableTop = table.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = tableTop - 300;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+    function parseDate(dateString) {
+        const [day, month, year] = dateString.split('/').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    function sortTableByDate() {
+        var table = document.getElementById("myTable");
+        var rows = Array.from(table.rows).slice(1);
+
+        rows.sort(function (rowA, rowB) {
+            var dateA = parseDate(rowA.cells[0].innerText);
+            var dateB = parseDate(rowB.cells[0].innerText);
+
+            return dateB - dateA;
+        });
+
+        rows.forEach(function (row) {
+            table.tBodies[0].removeChild(row);
+        });
+
+        rows.forEach(function (row) {
+            table.tBodies[0].appendChild(row);
+        });
+    }
+
+    function scrollToTop() {
+        const input = document.getElementById('searchInput');
+        window.scrollTo({
+            top: 500,
+            behavior: 'smooth'
+        });
+
+        input.focus();
+    }
+
+    function toggleButtonVisibility() {
+        const button = document.getElementById('search-clean');
+        const table = document.getElementById('myTable');
+
+        if (button && table) {
+            const allRows = table.getElementsByTagName('tr');
+            const displayedRows = Array.from(allRows).filter(row => row.style.display !== 'none');
+            const totalRows = allRows.length;
+            const visibleRows = displayedRows.length;
+
+            if (visibleRows < totalRows) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    }
+
+    function filterTable() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toUpperCase();
+        const table = document.getElementById('myTable');
+        const rows = table.getElementsByTagName('tr');
+        const feedback = document.getElementById('feedback');
+        let resultsFound = false;
+
+        if (filter) {
+            feedback.textContent = `Termos da busca: "${input.value}"`;
+        } else {
+            feedback.textContent = 'Lista Completa';
+        }
+
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            let found = false;
+
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].textContent.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                    resultsFound = true;
+                    break;
+                }
+            }
+
+            rows[i].style.display = found ? '' : 'none';
+        }
+
+        document.getElementById('noResultsMessage').style.display = resultsFound ? 'none' : 'block';
+        toggleButtonVisibility();
+    }
+
+    function filterTableByState(uf, estadoNome, event) {
+        event.preventDefault();
+        const table = document.getElementById('myTable');
+        const rows = table.getElementsByTagName('tr');
+        let resultsFound = false;
+
+        const ufFormatted = uf.toUpperCase().trim();
+        const estadoNomeFormatted = estadoNome.toUpperCase().trim();
+
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            const estadoCell = cells[4];
+            let found = false;
+
+            if (estadoCell) {
+                const cellText = estadoCell.textContent.toUpperCase().trim();
+
+                if (cellText === ufFormatted || cellText === estadoNomeFormatted) {
+                    found = true;
+                    resultsFound = true;
+                }
+            }
+
+            rows[i].style.display = found ? '' : 'none';
+        }
+
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        if (resultsFound) {
+            noResultsMessage.style.display = 'none';
+            document.getElementById('feedback').textContent = `Exibindo resultados para: ${estadoNome}`;
+        } else {
+            noResultsMessage.style.display = 'block';
+            document.getElementById('feedback').textContent = 'Nenhum resultado encontrado';
+        }
+
+        toggleButtonVisibility();
+        scrollToTable();
+    }
+
+    function clearSearch() {
+        const input = document.getElementById('searchInput');
+        const feedback = document.getElementById('feedback');
+        const table = document.getElementById('myTable');
+        const rows = table.getElementsByTagName('tr');
+
+        input.value = '';
+        feedback.textContent = 'Lista Completa';
+
+        for (let i = 1; i < rows.length; i++) {
+            rows[i].style.display = '';
+        }
+
+        document.getElementById('noResultsMessage').style.display = 'none';
+        const button = document.getElementById('search-clean');
+        button.style.backgroundColor = 'white';
+        toggleButtonVisibility();
+        scrollToTop()
+    }
+
+    function changeButtonColor(color) {
+        const button = document.getElementById('search-clean');
+        button.style.backgroundColor = color;
+    }
+
+    function resetButtonColor() {
+        const button = document.getElementById('search-clean');
+        button.style.backgroundColor = 'white';
+    }
+
+    sortTableByDate();
+</script>

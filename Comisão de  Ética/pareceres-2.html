@@ -1,0 +1,55 @@
+<script>
+    function styleItemsAsCards() {
+        const listContainer = document.getElementById('document-list-items');
+        const items = document.querySelectorAll('#document-list-items li');
+        let itemWidth = window.innerWidth < 768 ? '100%' : '49%';
+
+        Object.assign(listContainer.style, {
+            listStyle: 'none',
+            padding: '0',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            gap: '10px'
+        });
+
+        items.forEach(item => {
+            Object.assign(item.style, {
+                border: '1px solid #ddd',
+                borderRadius: '8px',            // Bordas arredondadas
+                padding: '16px',                // Espaçamento interno dos itens
+                marginBottom: '12px',           // Margem inferior
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Sombra leve
+                backgroundColor: '#fff',        // Cor de fundo branca
+                transition: 'transform 0.2s',   // Transição suave para o efeito hover
+                width: itemWidth                // Largura dos cards
+            });
+
+            item.addEventListener('mouseover', () => {
+                item.style.border = '1px solid #cf581f';
+            });
+
+
+            item.addEventListener('mouseout', () => {
+                item.style.border = '1px solid #ddd';
+            });
+
+            // Adicionar ícone FontAwesome aos links de download
+            const link = item.querySelector('a'); // Seleciona o link no item
+            if (link) {
+                const icon = document.createElement('i'); // Cria o elemento <i>
+                icon.classList.add('fas', 'fa-download'); // Adiciona as classes FontAwesome
+                icon.style.marginRight = '8px'; // Espaçamento entre ícone e texto do link
+                icon.style.color = '#cf581f';
+                link.prepend(icon); // Insere o ícone antes do texto do link
+                link.style.fontSize = 'small';
+                link.style.fontWeight = '700';
+                link.style.display = 'block';
+                link.style.margin = '16px 0 0 0';
+
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', styleItemsAsCards);
+</script>

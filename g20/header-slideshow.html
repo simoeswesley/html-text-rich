@@ -1,0 +1,337 @@
+<style>
+    /* Contêiner do cabeçalho */
+    .g20br-header-container {
+        position: relative;
+        overflow: hidden;
+        transition: background-image 1s ease-in-out;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 24px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #073660;
+    }
+
+    .g20br-header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        max-width: 600px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .g20br-header-logo {
+        background-image: url('resolveuid/a4259377d518485e92a8f0c2ef780ab0');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        height: 200px;
+        width: 200px;
+    }
+
+    .g20br-header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        max-width: 600px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        margin-top: 187px;
+    }
+
+    .fade-in {
+        opacity: 1;
+    }
+
+    .g20br-header-logo.fixed {
+        opacity: 1;
+        transition: none;
+        position: absolute;
+        top: 66px;
+        margin-left: 34px;
+    }
+
+    /* Estilo do texto */
+    .g20br-header-text-section h2 {
+        color: #ffffff;
+        font-weight: 600;
+        text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.41);
+        line-height: 3rem;
+        margin-bottom: 24px;
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .g20br-header-text-section h2 span {
+        font-weight: 200;
+        text-align: center;
+    }
+
+    .g20br-header-text-section p {
+        color: #ffffff;
+        font-weight: 300;
+        line-height: 1.5;
+        text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.41);
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .g20br-header-text-section h2 a,
+    .g20br-header-text-section p a {
+        color: inherit;
+        text-decoration: none;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .g20br-header-text-section h2 a:hover,
+    .g20br-header-text-section p a:hover {
+        color: #f0f0f0;
+        text-decoration: underline;
+    }
+
+    .g20br-header-text-section a {
+        display: flex;
+        color: #ffffff;
+        font-weight: 500;
+        line-height: 1.5;
+        text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.41);
+        font-size: smaller;
+        border-radius: 31px;
+        border: 2px solid #ffffff;
+        padding: 9px 28px;
+        margin-top: 24px;
+        justify-content: center;
+        text-decoration: none;
+        transition: background-color 0.5s ease, transform 0.5s ease;
+    }
+
+    .g20br-header-text-section a:hover {
+        background-color: #ffffff;
+        color: #011e3a;
+    }
+
+
+    /* Contêiner das setas e indicadores */
+    .slideshow-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 28px;
+        left: 0;
+        right: 0;
+        gap: 20px;
+    }
+
+    /* Estilo das setas */
+    .slideshow-arrow {
+        font-size: 24px;
+        color: #ffffff;
+        cursor: pointer;
+        transition: color 0.5s ease, transform 0.5s ease;
+    }
+
+    .slideshow-arrow:hover {
+        color: #f39c12;
+        transform: scale(1.2);
+    }
+
+    /* Indicadores */
+    .slideshow-indicators {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .slideshow-indicator {
+        width: 10px;
+        height: 10px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.5s ease, transform 0.5s ease;
+    }
+
+    .slideshow-indicator.active {
+        background-color: #f39c12;
+        transform: scale(1.2);
+    }
+
+    @media (min-width: 768px) {
+        .g20br-header-container {
+            padding: 24px 20px;
+            flex-direction: row-reverse;
+            background-size: cover;
+            justify-content: center;
+            height: unset;
+            gap: 104px;
+        }
+
+        .g20br-header-content {
+            margin-top: 0;
+        }
+
+        .g20br-header-logo.fixed {
+            position: initial;
+            margin-left: 0;
+            margin-bottom: 54px;
+        }
+
+        .g20br-header-text-section h2 {
+            font-size: x-large;
+            text-align: left;
+        }
+
+        .g20br-header-text-section p {
+            font-size: 1.5rem;
+            text-align: left;
+        }
+
+        .g20br-header-text-section a {
+            width: fit-content;
+            text-align: left;
+        }
+
+        .g20br-header-logo {
+            height: 260px;
+            width: 400px;
+        }
+    }
+</style>
+
+<section class="g20br-header-section">
+    <div class="g20br-header-container" id="slideshow-container">
+        <div class="g20br-header-logo fixed"></div>
+        <div class="g20br-header-content fade-in" id="slideshow-content">
+            <article class="g20br-header-text-section">
+                <h2 id="slideshow-title"><span>G20 Brasil 2024</span><br />Construindo um mundo justo e um
+                    planeta sustentável</h2>
+                <p id="slideshow-description">O G20 é um grupo composto pelas 19 maiores economias do mundo
+                    e a União Europeia. Ele reúne líderes globais...</p>
+                <a href="#" id="slideshow-link">Leia mais</a>
+            </article>
+        </div>
+    </div>
+
+    <!-- Contêiner das setas de navegação e indicadores -->
+    <div class="slideshow-controls">
+        <i class="fas fa-chevron-left slideshow-arrow" id="prev-slide"></i>
+        <div id="slideshow-indicators" class="slideshow-indicators"></div>
+        <i class="fas fa-chevron-right slideshow-arrow" id="next-slide"></i>
+    </div>
+</section>
+
+
+<script>
+    const slides = [
+        {
+            image: 'resolveuid/53d25e41819d4bbd8b0aa9215891f999',
+            title: 'Side Event ',
+            subtitle: 'Grupo de Trabalho Anticorrupção do G20',
+            description: 'O evento paralelo às reuniões do G20, em 21 de outubro de 2024 em Natal/RN, destacará a importância da integridade e da anticorrupção para um mundo mais justo e sustentável.',
+            link: 'https://www.gov.br/cgu/pt-br/acesso-a-informacao/institucional/eventos/side-event-do-acwg-g20'
+        },
+        {
+            image: 'resolveuid/36ccde11a27d48b48eb13dd3cbd2d970',
+            title: 'G20 Brasil 2024',
+            subtitle: '"Nosso trabalho tem um impacto profundo na luta global contra a corrupção” - Ministro da CGU',
+            description: 'Vinícius de Carvalho discursou na abertura da Segunda Reunião Técnica do GTAC, em Paris, França',
+            link: 'https://www.gov.br/cgu/pt-br/assuntos/noticias/2024/06/g20-201cnosso-trabalho-tem-um-impacto-profundo-na-luta-global-contra-a-corrupcao201d-afirmou-o-ministro-da-cgu'
+        },
+        {
+            image: 'resolveuid/1b5c64b93e224b88970c7a6de4520dcb',
+            title: 'CGTIC',
+            subtitle: 'CGU realiza 3ª reunião ordinária do Conselho de Transparência, Integridade e Combate à Corrupção',
+            description: 'Encontro discute política de integridade, combate à corrupção e apresenta atualizações sobre o G20 e PAC',
+            link: 'https://www.gov.br/cgu/pt-br/assuntos/noticias/2024/06/cgu-realiza-3a-reuniao-ordinaria-do-conselho-de-transparencia-integridade-e-combate-a-corrupcao'
+        }
+    ];
+    let currentSlide = 0;
+    const slideDuration = 5000; // 3 segundos por slide
+    let slideshowInterval;
+
+    const slideshowContainer = document.getElementById('slideshow-container');
+    const slideshowContent = document.getElementById('slideshow-content');
+    const slideshowTitle = document.getElementById('slideshow-title');
+    const slideshowDescription = document.getElementById('slideshow-description');
+    const slideshowLink = document.getElementById('slideshow-link');
+    const slideshowIndicators = document.getElementById('slideshow-indicators');
+
+    function createIndicators() {
+        slides.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('slideshow-indicator');
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            slideshowIndicators.appendChild(indicator);
+        });
+    }
+
+    function updateIndicators() {
+        const indicators = document.querySelectorAll('.slideshow-indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        changeSlide();
+        resetSlideshowInterval();
+    }
+
+    function resetSlideshowInterval() {
+        clearInterval(slideshowInterval);
+        slideshowInterval = setInterval(nextSlide, slideDuration);
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        changeSlide();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        changeSlide();
+    }
+
+    function changeSlide() {
+        slideshowContent.classList.remove('fade-in');
+        setTimeout(() => {
+            slideshowContainer.style.backgroundImage = `url('${slides[currentSlide].image}')`;
+            slideshowTitle.innerHTML = `<span>${slides[currentSlide].title}</span><br />${slides[currentSlide].subtitle}`;
+            slideshowDescription.textContent = slides[currentSlide].description;
+            slideshowLink.setAttribute('href', slides[currentSlide].link);
+            slideshowContent.classList.add('fade-in');
+            updateIndicators();
+        }, 500);
+    }
+
+    function showFirstSlide() {
+        slideshowContainer.style.backgroundImage = `url('${slides[0].image}')`;
+        slideshowTitle.innerHTML = `<span>${slides[0].title}</span><br />${slides[0].subtitle}`;
+        slideshowDescription.textContent = slides[0].description;
+        slideshowLink.setAttribute('href', slides[0].link);
+        slideshowContent.classList.add('fade-in');
+        updateIndicators();
+    }
+
+    document.getElementById('prev-slide').addEventListener('click', prevSlide);
+    document.getElementById('next-slide').addEventListener('click', nextSlide);
+
+    // Inicializar o slideshow
+    createIndicators();
+    showFirstSlide();
+    slideshowInterval = setInterval(nextSlide, slideDuration);
+</script>
